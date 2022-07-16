@@ -48,9 +48,22 @@ const orange = new Fruity({
     review : "colorful"
 });
 
-Fruity.insertMany([kiwi,banana,orange],function(err){
+// Fruity.insertMany([kiwi,banana,orange],function(err){     // it saves data everytime we run 
+//     if(err)
+//         console.log(err);
+//     else
+//         console.log("run succesfully");
+// });
+Fruity.find(function(err,fruits){
     if(err)
         console.log(err);
     else
-        console.log("run succesfully");
+        //console.log(fruits);
+        //mongoose.connection.close();
+
+        fruits.forEach(function(fruit){
+            console.log(fruit.name);
+        });
+    
+        mongoose.connection.close();
 });
